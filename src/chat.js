@@ -1,28 +1,25 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import faker from 'faker';
+import { bindActionCreators } from 'redux';
+import Messages from './messages';
+import Users from './users';
+// import addNewUser from './actions';
 
 class Chat extends Component {
     render() {
         console.log(this.props);
-        const randUserName = `@${faker.internet.userName().toLowerCase()}`;
         return (
-            <div>
-                <h3>chat</h3>
-                <button onClick={() => this.props.addNewUser(randUserName)}>
-                    add new user
-                </button>
-                <hr/>
-                {this.props.users.map(user => {
-                    return <p key={user}>{user}</p>
-                })}
-            </div>
+            <main className="main-wrapper">
+                <Messages messages={this.props.messages} />
+                <Users users={this.props.users} addNewUser={this.props.addNewUser} />
+            </main>
         );
     }
 }
 
 const mapStateToProps = state => ({
-   users: state
+    users: state.usersReducer,
+    messages: state.messagesReducer
 });
 
 const mapDispatchToProps = (dispatch) => ({

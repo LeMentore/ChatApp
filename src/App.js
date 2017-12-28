@@ -2,14 +2,7 @@ import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import Chat from './chat';
-
-const userState = ['@charlie_frye', '@john123', '@alex33'];
-const reducer = (state = userState, action) => {
-    if(action.type === 'ADD_NEW_USER'){
-        return state.concat(action.username)
-    }
-    return state;
-};
+import reducer from './reducers'
 
 const store = createStore(reducer);
 window.store = store;
