@@ -1,10 +1,39 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import Chat from './chat';
-import reducer from './reducers'
+import reducer from './reducers';
+import { addNewUser } from './actions';
+import reduxThunk from 'redux-thunk';
 
-const store = createStore(reducer);
+const loggerMiddleware = (store) => {
+    return function(next){
+        return function(action){
+            console.log('trigger', action);
+            let result = next(action);
+            console.log('after action', store.getState());
+            return result;
+        }
+    }
+}
+
+const checkUserMW = store => next => action => {
+    if(action.type === 'CONNECTED_NEW_USER'){
+        let fakeRequest = () => new Promise(resolve => {
+            setTimeout(() => {
+                resolve()
+            }, 1500)
+        })
+
+        fakeRequest().then(() => {
+            store.dispatch(addNewUser())
+        })
+    }
+
+    return next(action);
+}
+
+const store = createStore(reducer , applyMiddleware(loggerMiddleware, checkUserMW, reduxThunk));
 window.store = store;
 
 store.subscribe(() => {

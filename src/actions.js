@@ -1,9 +1,24 @@
 import faker from 'faker';
 
 export const addNewUser = () => {
-    const randUserName = `@${faker.internet.userName().toLowerCase()}`;
-    return {
-        type: 'ADD_NEW_USER',
-        randUserName
+    const username = `@${faker.internet.userName().toLowerCase()}`;
+    return dispatch => {
+        dispatch({
+            type: 'ADD_NEW_USER',
+            username
+        })
+        dispatch(newMessage(
+            username,
+            'hello!',
+            Date.now()
+        ))
     }
 };
+
+export const newMessage = (author, text, datetime) => {
+    return {
+        type: 'ADD_NEW_MESSAGE',
+        author, text, datetime
+    }
+};
+

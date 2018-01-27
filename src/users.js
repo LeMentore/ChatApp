@@ -1,9 +1,9 @@
 import React, { Component } from 'react'
-import faker from 'faker';
+// import faker from 'faker';
 
 export default class UsersList extends Component {
     render() {
-        const randUserName = `@${faker.internet.userName().toLowerCase()}`;
+        // const randUserName = `@${faker.internet.userName().toLowerCase()}`;
         return (
             <div className="users">
                 <h3 className="users__title">Online users:</h3>
@@ -14,7 +14,7 @@ export default class UsersList extends Component {
                     })}
                 </ul>
 
-                <button onClick={() => this.props.addNewUser(randUserName)}>
+                <button onClick={this.props.addNewUser}>
                     add new user
                 </button>
             </div>
