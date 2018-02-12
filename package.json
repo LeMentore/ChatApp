@@ -1,0 +1,22 @@
+{
+  "name": "chat-app",
+  "version": "1.0.0",
+  "description": "chat on websocket",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:client": "cd client && npm-run-all -p watch-css start-js",
+    "start:server": "cd server && node app",
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeMentore/ChatApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeMentore/ChatApp/issues"
+  },
+  "homepage": "https://github.com/LeMentore/ChatApp#readme"
+}
