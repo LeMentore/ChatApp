@@ -1,9 +1,9 @@
-((wsUrl) => {
+export default ((wsUrl) => {
     let ws;
     ws = new WebSocket(wsUrl);
 
     ws.onopen = () => {
-        console.log('ws open');
+        console.log('ws open!');
     }
 
     ws.onmessage = (message) => {

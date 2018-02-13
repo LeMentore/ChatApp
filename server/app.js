@@ -47,7 +47,7 @@ wss.on('connection', function (ws) {
 });
 
 app.configure(function () {
-    app.set('port', process.env.PORT || 3000);
+    app.set('port', process.env.PORT || 3001);
     app.set('views', __dirname + '/views');
     app.use(express.favicon());
     app.use(express.logger('dev'));
