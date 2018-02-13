@@ -3,7 +3,10 @@ import { Provider } from 'react-redux';
 import UserList from 'containers/UserList';
 import MessagesList from 'containers/MessagesList';
 import store from 'store';
+import ws from 'util/ws';
+
 window.store = store;
+window.ws = ws;
 
 export default class ChatComponent extends Component {
     render(){

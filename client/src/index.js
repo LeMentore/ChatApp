@@ -2,11 +2,19 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import ChatComponent from 'components/Chat';
 import registerServiceWorker from 'registerServiceWorker';
-
-import ws from 'util/ws';
 import 'assets/styles/style.css'
 
-window.ws = ws;
+const rootElement = document.getElementById('root');
 
-ReactDOM.render(<ChatComponent />, document.getElementById('root'));
+ReactDOM.render(<ChatComponent />, rootElement);
 registerServiceWorker();
+
+if (module.hot) {
+    module.hot.accept('components/Chat', () => {
+        const NextApp = require('components/Chat').default
+        ReactDOM.render(
+            <NextApp />,
+            rootElement
+        )
+    })
+}
