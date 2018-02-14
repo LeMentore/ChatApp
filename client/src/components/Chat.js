@@ -10,7 +10,7 @@ window.ws = ws;
 export default class ChatComponent extends Component {
     render(){
         return(
-            <Provider key={Date.now()} store={store}>
+            <Provider key={ module.hot ? Date.now() : store } store={store} >
                 <div className="container clearfix">
                     <ChatWrap />
                 </div>

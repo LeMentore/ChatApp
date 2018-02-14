@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ws from 'util/ws'
 
 export default (ChildComponent) => {
     return class authHOC extends Component {
@@ -11,6 +12,7 @@ export default (ChildComponent) => {
             }
 
             localStorage.setItem('auth', name);
+            ws.emit(name);
             return name
         }
 

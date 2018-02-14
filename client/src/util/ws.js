@@ -10,6 +10,21 @@ export default ((wsUrl) => {
         console.log(message.data);
     }
 
-    return ws
+    let countConnect = 0;
 
-})('ws://localhost:3001')
+    const emit = (message) => {
+        if(countConnect > 5) return
+        if(ws.readyState === ws.CONNECTING){
+            setTimeout(() => {
+                emit(message);
+                countConnect++;
+            }, 500)
+            return
+        }
+        ws.send(message);
+        countConnect = 0;
+    }
+
+    return { emit }
+
+})('ws://127.0.0.1:3001')
