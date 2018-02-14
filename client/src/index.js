@@ -5,6 +5,7 @@ import registerServiceWorker from 'registerServiceWorker';
 import 'assets/styles/style.css'
 
 const rootElement = document.getElementById('root');
+localStorage.removeItem('auth');
 
 ReactDOM.render(<ChatComponent />, rootElement);
 registerServiceWorker();
