@@ -1,20 +1,22 @@
 {
   "name": "chat-app",
-  "version": "0.1.0",
-  "private": true,
-  "dependencies": {
-    "faker": "^4.1.0",
-    "react": "^16.2.0",
-    "react-dom": "^16.2.0",
-    "react-redux": "^5.0.6",
-    "react-scripts": "1.0.17",
-    "redux": "^3.7.2",
-    "redux-thunk": "^2.2.0"
-  },
+  "version": "1.0.0",
+  "description": "chat on websocket",
+  "main": "index.js",
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
-  }
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:client": "cd client && npm-run-all -p watch-css start-js",
+    "start:server": "cd server && node app",
+    "start": "concurrently \"npm run start:server\" \"npm run start:client\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/LeMentore/ChatApp.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/LeMentore/ChatApp/issues"
+  },
+  "homepage": "https://github.com/LeMentore/ChatApp#readme"
 }
