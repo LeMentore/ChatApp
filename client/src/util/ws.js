@@ -4,11 +4,11 @@ export default ((wsUrl) => {
 
     ws.onopen = () => {
         console.log('ws open!');
-    }
+    };
 
     ws.onmessage = (message) => {
         console.log(message.data);
-    }
+    };
 
     let countConnect = 0;
 
@@ -23,7 +23,7 @@ export default ((wsUrl) => {
         }
         ws.send(message);
         countConnect = 0;
-    }
+    };
 
     return { emit }
 
