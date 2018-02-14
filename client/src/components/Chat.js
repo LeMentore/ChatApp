@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
-import UserList from 'containers/UserList';
-import MessagesList from 'containers/MessagesList';
+import ChatWrap from 'components/ChatWrap';
 import store from 'store';
 import ws from 'util/ws';
 
@@ -13,8 +12,7 @@ export default class ChatComponent extends Component {
         return(
             <Provider key={Date.now()} store={store}>
                 <div className="container clearfix">
-                    <UserList />
-                    <MessagesList />
+                    <ChatWrap />
                 </div>
             </Provider>
         )
