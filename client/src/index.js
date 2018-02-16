@@ -1,18 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import ChatComponent from 'components/Chat';
+import App from 'containers/App';
 import registerServiceWorker from 'registerServiceWorker';
 import 'assets/styles/style.css'
 
 const rootElement = document.getElementById('root');
 localStorage.removeItem('auth');
 
-ReactDOM.render(<ChatComponent />, rootElement);
+ReactDOM.render(<App />, rootElement);
 registerServiceWorker();
 
 if (module.hot) {
-    module.hot.accept('components/Chat', () => {
-        const NextApp = require('components/Chat').default
+    module.hot.accept('containers/App', () => {
+        const NextApp = require('containers/App').default
         ReactDOM.render(
             <NextApp />,
             rootElement
