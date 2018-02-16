@@ -3,8 +3,8 @@ import messagesReducer from 'reducers/messages'
 import peopleReducer from 'reducers/people'
 
 const chatReducer = combineReducers({
-    peopleReducer,
-    messagesReducer
+	peopleReducer,
+	messagesReducer
 })
 
 export default chatReducer
